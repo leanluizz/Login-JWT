@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { Form } from "../pages/components/form.tsx"
-import  { ModalComponent } from "../pages/components/modal.tsx"
+import  { ModalComponent } from "./components/ModalError.tsx"
 import { Box } from "../pages/components/box.tsx"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-bootstrap'

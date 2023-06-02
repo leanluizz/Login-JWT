@@ -19,6 +19,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/components/modal.tsx", "pages/index.jsx", "pages/context/context.tsx", "pages/components/box.tsx", "pages/components/form.tsx", "pages/components/context.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/components/ModalError.tsx", "pages/index.jsx", "pages/context/context.tsx", "pages/components/box.tsx", "pages/components/form.tsx", "pages/components/context.tsx"],
   "exclude": ["node_modules"]
 }

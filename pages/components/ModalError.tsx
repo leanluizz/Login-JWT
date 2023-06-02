@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React, { useContext, useState } from 'react';
+import React, { ReactPropTypes, useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import {Context} from './context.tsx'
@@ -10,7 +10,7 @@ const roboto = Roboto({
   subsets: ['latin'],
 });
 
-export function ModalComponent() {
+export function ModalComponent({warning}: any) {
 
   let {show, handleClose}: any = useContext(Context)
 
@@ -21,7 +21,7 @@ export function ModalComponent() {
           <Modal.Title>Warning!</Modal.Title>
         </Modal.Header>
         <Modal.Body className={`bg-danger text-light ${roboto.className}`}>
-          Empty form entries!
+          {warning}
           </Modal.Body>
         <Modal.Footer>
           <Button variant="outline-secondary" onClick={handleClose}>
