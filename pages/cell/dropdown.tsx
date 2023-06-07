@@ -9,7 +9,7 @@ if (process.browser) {
 }
 
     return(
-        <div className="dropdown me-1">
+        <div className="dropdown ps-3 me-1">
         <button type="button" id='Login' className="rounded-4 text-center overflow-hidden text-break fw-bold outline-0 border-0 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="10,20">
           Login
         </button>
