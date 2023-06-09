@@ -7,7 +7,7 @@ import { Context } from "./context.tsx";
 
 export function Box(props: any){
 const log = (...e: any) =>  console.log(e)
-let {settitle, setlegend}: any = useContext(Context)
+let {settitle, setlegend, Login,setLogin}: any = useContext(Context)
 
 
 const ForSide = (e: any) => {
@@ -25,12 +25,16 @@ const ButtonForm: any= document.querySelectorAll(".btn")
      const BTNdATE: any = document.querySelector('#btn-data')
      
   useEffect(() => {
+
     ButtonForm[0].addEventListener("click", () => {
 
         Form[0].style = "left : -200%; transition: 1.5s;"
         Background.style = "animation: SliderToRight 1.5s forwards;"
         Form[1].style = "right : 25%; transition: 1.5s;"
         Form[2].style = "animation: FormSidetoRight 1.5s forwards;"
+        setLogin(true)
+        
+
        setTimeout(() => {
         settitle("Sign in to website")
         setlegend("or use your email for sign your credentials")
@@ -38,7 +42,6 @@ const ButtonForm: any= document.querySelectorAll(".btn")
         PasswordConfirm.remove()
         Forgot.innerHTML = "Forgot your password ?"
         Forgot.style.display = "block"
-        BTNdATE.disabled = "true"
     }, 500);
         
     })
@@ -52,8 +55,8 @@ const ButtonForm: any= document.querySelectorAll(".btn")
         Background.style = "animation: SliderToLeft 1.5s forwards;"
         Form[0].style = "left : 25%; transition: 1.5s;"
         Form[2].style = "animation: FormSidetoLeft 1.5s forwards;"
-        BTNdATE.removeAttribute("disabled")
-       
+        setLogin(false)
+        
             setTimeout(() => {
                 settitle("Create account")
                 setlegend("or use your email for registration")

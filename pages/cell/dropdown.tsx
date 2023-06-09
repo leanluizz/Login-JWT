@@ -3,10 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './login.tsx'
 export default function (){
 
-if (process.browser) {
-    const LoginCell = document.querySelector("#LoginCell") 
-    console.log(LoginCell);
-}
 
     return(
         <div className="dropdown ps-3 me-1">

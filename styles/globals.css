@@ -3,6 +3,7 @@
         display: none;
     }
 }
+
 @media (max-width:900px) {
     #__next #Login_box, #userForm{ height: 100%;} 
 }
@@ -67,7 +68,6 @@ body{
 }
 
 #background{
-    display: none;
     position: relative;
     z-index: 2;
     overflow: hidden;
