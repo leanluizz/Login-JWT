@@ -1,7 +1,7 @@
 import Image from "next/image"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'animate.css';
-import { SyntheticEvent, useContext, useState } from "react";
+import { SyntheticEvent, useContext, useEffect, useState } from "react";
 import { ModalComponent } from "./ModalError.tsx"
 import { Context } from './context.tsx'
 
@@ -14,7 +14,8 @@ export function Form(props: any) {
         password:"",
         email:""
     })
-    const handleInput = (e) => {
+
+    const handleInput = (e: any) => {
         setDate({...Date, [e.target.name]: e.target.value})
         console.log(Date);
     }
@@ -42,7 +43,7 @@ export function Form(props: any) {
         } else {
             setWarning("Empty forms entries")
         }
-         }else{
+         }else{ // Login
             e.preventDefault()
             const sendData = async () => {
             await fetch("http://localhost:3001/login", {
