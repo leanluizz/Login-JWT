@@ -1,7 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
 import mysql from 'mysql'
-import jwt from 'jsonwebtoken'
 
 type Data = {
   name: string,
@@ -12,7 +11,6 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  const { query } = req
   var con = mysql.createConnection({
     host: "localhost",
     user: "root",
@@ -27,9 +25,9 @@ con.query("USE login_jwt;", function(err, rows){
   if (err) throw err;
   console.log(rows);
 })
-con.query(`INSERT INTO Users (user, password, email) VALUES ("${query.user}", "${query.password}", "${query.email}");`, function(err, rows){
+con.query(`INSERT INTO Users (user, password, email) VALUES ("${req.body.Date.user}", "${req.body.Date.password}", "${req.body.Date.email}");`, function(err, rows){
   if (err) throw err;
-  console.log(rows, `${query.user}, ${query.password}`);
+  console.log(rows, `${req.body}, ${req.body}`);
 })
 res.redirect('http://localhost:3000/')
 }

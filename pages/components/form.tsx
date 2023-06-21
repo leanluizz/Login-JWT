@@ -9,13 +9,34 @@ export function Form(props: any) {
 
     let { handleShow, Login }: any = useContext(Context)
     let [Warning, setWarning] = useState<String>('')
-
-    const Valid = (e: SyntheticEvent) => {
+    const [Date, setDate] = useState({
+        user:"",
+        password:"",
+        email:""
+    })
+    const handleInput = (e) => {
+        setDate({...Date, [e.target.name]: e.target.value})
+        console.log(Date);
+    }
+    
+    const Submit = (e: SyntheticEvent) => {
+        e.preventDefault()
         const Inputs = document.querySelectorAll('.register')
-        
+
+   const registerData = async () => {
+            await fetch("http://localhost:3000/api/hello", {
+                method: "POST",
+                headers:{
+                    'Content-Type': "application/json"
+                },
+                body: JSON.stringify({Date})
+            })
+            }
+
             if(!Login){
+                
         let inputValid = Inputs[1].value == Inputs[2].value
-        Inputs.forEach((i: any) => i.value == '' || !inputValid ? (e.preventDefault(), handleShow()) : null)
+        Inputs.forEach((i: any) => i.value == '' || !inputValid ? (e.preventDefault(), handleShow()) : registerData())
         if (!inputValid) {
             setWarning("Passwords not are same")
         } else {
@@ -23,14 +44,23 @@ export function Form(props: any) {
         }
          }else{
             e.preventDefault()
-            console.log("Cu");   
+            const sendData = async () => {
+            await fetch("http://localhost:3001/login", {
+                method: "POST",
+                headers:{
+                    'Content-Type': "application/json"
+                },
+                body: JSON.stringify({Date})
+            })
+            }
+            sendData()
          }
     }
 
     return (
         <>
             <ModalComponent warning={Warning} />
-            <form onSubmit={Valid} action="./api/hello" id={props.id} className="p-1 mx-auto text-center animate__animated animate__rubberBand">
+            <form onSubmit={Submit} action="./api/hello" id={props.id} className="p-1 mx-auto text-center animate__animated animate__rubberBand">
                 <h1 className="pb-5 pt-5 text-break animate__animated animate__rubberBand" >{props.title}</h1>
                 <div className="d-flex justify-content-around align-items-center">
                     <button className="svgbutton"><svg width="1rem" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" /></svg></button>
@@ -39,10 +69,10 @@ export function Form(props: any) {
                 </div>
 
                 <p className="text-center text-break pt-5 pb-5">{props.legend}</p>
-                <input type="text" name="user" id="inputs" className="form-control mb-3 register" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"></input>
-                <input type="password" name="password" className="form-control mb-3 register" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1"></input>
+                <input type="text" name="user" onChange={handleInput} id="inputs" className="form-control mb-3 register" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"></input>
+                <input type="password" name="password" onChange={handleInput} className="form-control mb-3 register" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1"></input>
                 <input type="password" id="password-confirm" className="form-control mb-3 register" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1"></input>
-                <input type="email" id="email" name="email" className="form-control mb-3 register" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1"></input>
+                <input type="email" id="email" name="email" onChange={handleInput} className="form-control mb-3 register" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1"></input>
                 <button type="submit" id="btn-data" className="btn btn-success text-break">Submit</button>
                 <p className="text-center mt-1"><a href="#" className="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover"></a></p>
             </form>
