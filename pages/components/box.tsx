@@ -48,6 +48,7 @@ const ButtonForm: any= document.querySelectorAll(".btn")
   }, []) 
 
 
+
   useEffect(() => {
      ButtonForm[1].addEventListener("click", () => {
 
@@ -66,6 +67,7 @@ const ButtonForm: any= document.querySelectorAll(".btn")
             }, 500);                  
         })      
   }, [])
+
     }
     
     return(

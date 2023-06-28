@@ -9,6 +9,12 @@ export function Form(props: any) {
 
     let { handleShow, Login }: any = useContext(Context)
     let [Warning, setWarning] = useState<String>('')
+    let [Title, setTitle] = useState<String>('')
+    let [classModalInput, setclassModalInput] = useState<String>('')
+    let [BackgroundModal, setBackgroundModal] = useState<String>('')
+    let [displayBtnModalClose, setdisplayBtnModalClose] = useState<String>('')
+    let [displayBtnModalRescue, setdisplayBtnModalRescue] = useState<String>('')
+
     const [Date, setDate] = useState({
         user:"",
         password:"",
@@ -17,11 +23,16 @@ export function Form(props: any) {
 
     const handleInput = (e: any) => {
         setDate({...Date, [e.target.name]: e.target.value})
-        console.log(Date);
     }
     
     const Submit = (e: SyntheticEvent) => {
         e.preventDefault()
+        setTitle("Warning!")
+        setclassModalInput("d-none")
+        setBackgroundModal('bg-danger')
+        setdisplayBtnModalClose('d-block')
+        setdisplayBtnModalRescue('d-none')
+
         const Inputs = document.querySelectorAll('.register')
 
    const registerData = async () => {
@@ -57,10 +68,31 @@ export function Form(props: any) {
             sendData()
          }
     }
+    useEffect(() => {
+        const getResetPassword = document.querySelector("a")
+        getResetPassword?.addEventListener("click", () => {
+            handleShow()
+            setTitle('Rescue your password with your email')
+            setclassModalInput("d-block mx-auto w-75 rounded-2 border-2 bg-primary form-control")
+            setWarning('')
+            setBackgroundModal('')
+            setdisplayBtnModalClose('d-none')
+            setdisplayBtnModalRescue('d-block')
+        })
+    }, 
+    [])
 
     return (
         <>
-            <ModalComponent warning={Warning} />
+            <ModalComponent warning={Warning} 
+            title={Title}
+            button="Close"
+            cls={classModalInput}
+            bg={BackgroundModal}
+            rescue="Submit"
+            displayRescue={displayBtnModalRescue}
+            displayClose={displayBtnModalClose}
+            />
             <form onSubmit={Submit} action="./api/hello" id={props.id} className="p-1 mx-auto text-center animate__animated animate__rubberBand">
                 <h1 className="pb-5 pt-5 text-break animate__animated animate__rubberBand" >{props.title}</h1>
                 <div className="d-flex justify-content-around align-items-center">
