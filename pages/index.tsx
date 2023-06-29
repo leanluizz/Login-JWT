@@ -1,17 +1,16 @@
-import Image from 'next/image'
 import { Form } from "../pages/components/form.tsx"
-import  { ModalComponent } from "./components/ModalError.tsx"
 import { Box } from "../pages/components/box.tsx"
+import Status  from "../pages/components/status.tsx"
 import  Dropdown  from './cell/dropdown.tsx'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-bootstrap'
 import Head from 'next/head';
-import { Context, ContexProvider } from "../pages/components/context.tsx"
-import { ReactElement, useContext, useEffect, useState } from 'react';
+import { Context } from "../pages/components/context.tsx"
+import {useContext, useEffect, useState } from 'react';
 
 export default function Home() {
 
-   let {title, legend}: any = useContext(Context)
+   let {title, legend, Is}: any = useContext(Context)
 
 const flex: string= "d-flex justify-content-around align-items-center rounded-8"
 const none: string = "d-none justify-content-around align-items-center rounded-8" 
@@ -27,6 +26,11 @@ useEffect(() => {
    <title>Form</title>
    </Head>
    
+   <Status
+   boxClass={`${Is === true ? "bg-success" : "bg-danger"} bg-gradient bg-opacity-75 w-25 height-status-box position-absolute z-3`}
+   textClass="text-center text-light p-4"
+   fail="Ocurred an error..."
+   success="Register was a success, you can login now!!"/>
    <Dropdown />
 <div id="Login_box" className='rounded-1 d-flex justify-content-beetween align-items-center'>
    <div id='background' className={screen}>

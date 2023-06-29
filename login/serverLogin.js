@@ -35,4 +35,27 @@ app.post("/login", (req, res) =>{
     })
     //res.redirect('http://localhost:3000/')
 })
+
+app.post("/login_cell", (req, res) =>{
+  console.log(req.body);
+  var con = mysql.createConnection({
+      host: "localhost",
+      user: "root",
+      password: "Pcdfgh135790!"
+    });
+  
+    con.connect(function(err) {
+      if (err) throw err;
+      console.log("Connected!");
+    });
+  con.query("USE login_jwt;", function(err, rows){
+    if (err) throw err;
+    console.log(rows);
+  })
+  con.query(`SELECT * FROM Users WHERE user = "${req.body.Date.user}" AND password = "${req.body.Date.password}";`, function(err, rows){
+    if (err) throw err;
+    console.log(rows, `${req.body.Date.user}, ${req.body.Date.password}`);
+  })
+  //res.redirect('http://localhost:3000/')
+})
 app.listen(3001, console.log("Login open..."))

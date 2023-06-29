@@ -1,7 +1,7 @@
 import next from "next/types";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './login.tsx'
-export default function (){
+export default function Dropdown(){
 
 
     return(

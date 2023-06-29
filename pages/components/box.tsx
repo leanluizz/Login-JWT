@@ -23,7 +23,8 @@ const ButtonForm: any= document.querySelectorAll(".btn")
     const Email:any = document.querySelector('#email')
     const PasswordConfirm: any = document.querySelector('#password-confirm')
      const BTNdATE: any = document.querySelector('#btn-data')
-     
+     const Input: any = document.querySelectorAll("input")
+
   useEffect(() => {
 
     ButtonForm[0].addEventListener("click", () => {
@@ -36,6 +37,11 @@ const ButtonForm: any= document.querySelectorAll(".btn")
         
 
        setTimeout(() => {
+
+        Input.forEach(element => {
+            element.value = ''
+         })
+
         settitle("Sign in to website")
         setlegend("or use your email for sign your credentials")
         Email.remove()
@@ -51,7 +57,7 @@ const ButtonForm: any= document.querySelectorAll(".btn")
 
   useEffect(() => {
      ButtonForm[1].addEventListener("click", () => {
-
+        
         Form[1].style = "right : -200%; transition: 1.5s;"
         Background.style = "animation: SliderToLeft 1.5s forwards;"
         Form[0].style = "left : 25%; transition: 1.5s;"
@@ -59,6 +65,11 @@ const ButtonForm: any= document.querySelectorAll(".btn")
         setLogin(false)
         
             setTimeout(() => {
+
+            Input.forEach(element => {
+            element.value = ''
+            })
+
                 settitle("Create account")
                 setlegend("or use your email for registration")
                Form[2].insertBefore(Email, ButtonForm[2])

@@ -1,6 +1,27 @@
 import next from "next/types";
 import 'bootstrap/dist/css/bootstrap.min.css';
-export default function (){
+import { useEffect, useState } from "react";
+export default function Login (){
+
+    const [Date, setDate] = useState({
+        user:"",
+        password:"",
+    })
+
+    const handleInput = (e: any) => {
+        setDate({...Date, [e.target.name]: e.target.value})
+    }
+
+    const sendData = async () => {
+        await fetch("http://localhost:3001/login_cell", {
+            method: "POST",
+            headers:{
+                'Content-Type': "application/json"
+            },
+            body: JSON.stringify({Date})
+        })
+        }
+
     return(
         <div className="p-2">
             <h1 className="text-break text-center pb-2">Sign in</h1>
@@ -10,9 +31,9 @@ export default function (){
             <button className="svgbutton"><svg width="1.3rem" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z" /></svg></button>
             </div>
             <p className="text-break">or use your email for sign your credentials</p>
-            <input type="text" name="user" className="form-control mb-3" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"></input>
-            <input type="password" name="password" className="form-control mb-3" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1"></input>
-            <button type="submit" className="outline-0 border-0 text-light rounded-2 bg-success text-break">Submit</button>
+            <input type="text" onChange={handleInput} name="user" className="form-control mb-3" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"></input>
+            <input type="password" onChange={handleInput} name="password" className="form-control mb-3" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1"></input>
+            <button onClick={sendData} type="submit" className="outline-0 border-0 text-light rounded-2 bg-success text-break">Submit</button>
         </div>
     )
 }

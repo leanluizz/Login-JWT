@@ -27,7 +27,7 @@ con.query("USE login_jwt;", function(err, rows){
 })
 con.query(`INSERT INTO Users (user, password, email) VALUES ("${req.body.Date.user}", "${req.body.Date.password}", "${req.body.Date.email}");`, function(err, rows){
   if (err) throw err;
-  console.log(rows, `${req.body}, ${req.body}`);
+  console.log(rows, `${req.body.Date}, ${req.body.Date}`);
 })
 res.redirect('http://localhost:3000/')
 }

@@ -1,13 +1,12 @@
 import Image from "next/image"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'animate.css';
-import { SyntheticEvent, useContext, useEffect, useState } from "react";
+import { SyntheticEvent, useContext, useEffect, useLayoutEffect, useState } from "react";
 import { ModalComponent } from "./ModalError.tsx"
 import { Context } from './context.tsx'
-
+    
 export function Form(props: any) {
-
-    let { handleShow, Login }: any = useContext(Context)
+    let { handleShow, Login, setIs }: any = useContext(Context)
     let [Warning, setWarning] = useState<String>('')
     let [Title, setTitle] = useState<String>('')
     let [classModalInput, setclassModalInput] = useState<String>('')
@@ -24,7 +23,6 @@ export function Form(props: any) {
     const handleInput = (e: any) => {
         setDate({...Date, [e.target.name]: e.target.value})
     }
-    
     const Submit = (e: SyntheticEvent) => {
         e.preventDefault()
         setTitle("Warning!")
@@ -34,7 +32,7 @@ export function Form(props: any) {
         setdisplayBtnModalRescue('d-none')
 
         const Inputs = document.querySelectorAll('.register')
-
+      
    const registerData = async () => {
             await fetch("http://localhost:3000/api/hello", {
                 method: "POST",
@@ -43,10 +41,18 @@ export function Form(props: any) {
                 },
                 body: JSON.stringify({Date})
             })
+            .then(response => response.status === 200  ? setIs(true) : setIs(false))
             }
-
-            if(!Login){
+        if(!Login){ //Register
                 
+
+            let StatusBox: any = document.querySelector(".bg-opacity-75")
+            StatusBox.style.display = "block"
+            StatusBox.classList.add('animate__animated', 'animate__backInLeft');
+            setTimeout(() => {
+            StatusBox.classList.add('animate__animated', 'animate__backOutLeft');
+            }, 2000);
+
         let inputValid = Inputs[1].value == Inputs[2].value
         Inputs.forEach((i: any) => i.value == '' || !inputValid ? (e.preventDefault(), handleShow()) : registerData())
         if (!inputValid) {
@@ -64,10 +70,13 @@ export function Form(props: any) {
                 },
                 body: JSON.stringify({Date})
             })
+            .then(response => response.status == 200  ? setIs(true) : setIs(false))
             }
             sendData()
          }
+        
     }
+
     useEffect(() => {
         const getResetPassword = document.querySelector("a")
         getResetPassword?.addEventListener("click", () => {
@@ -81,6 +90,7 @@ export function Form(props: any) {
         })
     }, 
     [])
+    
 
     return (
         <>

@@ -6,13 +6,13 @@ export const ContexProvider = ({children, value}:any,) => { //props
     let [legend, setlegend] = useState<String>("or use your email for registration")
     let [show, setShow] = useState(false);
     let [Login, setLogin] = useState<Boolean>(false) 
-
+    let [Is, setIs] = useState<Boolean>()
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
     return <Context.Provider value={{
         title, legend, settitle, setlegend, show, setShow, handleClose, handleShow, Login, setLogin
-        }}>
+        , Is, setIs}}>
         {children}
     </Context.Provider>
 }
