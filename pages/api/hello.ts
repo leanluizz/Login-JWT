@@ -1,5 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { useContext } from 'react'
+import { Context } from "../context/context.tsx"
 import mysql from 'mysql'
 
 type Data = {
@@ -25,7 +27,8 @@ con.query("USE login_jwt;", function(err, rows){
   if (err) throw err;
   console.log(rows);
 })
-con.query(`INSERT INTO Users (user, password, email) VALUES ("${req.body.Date.user}", "${req.body.Date.password}", "${req.body.Date.email}");`, function(err, rows){
+let sql = `INSERT INTO Users (user, password, email) VALUES ("${req.body.Date.user}", "${req.body.Date.password}", "${req.body.Date.email}");`
+con.query(sql, function(err, rows){
   if (err) throw err;
   console.log(rows, `${req.body.Date}, ${req.body.Date}`);
 })

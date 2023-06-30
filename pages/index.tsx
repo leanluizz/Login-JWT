@@ -27,7 +27,7 @@ useEffect(() => {
    </Head>
    
    <Status
-   boxClass={`${Is === true ? "bg-success" : "bg-danger"} bg-gradient bg-opacity-75 w-25 height-status-box position-absolute z-3`}
+   boxClass={`${Is == true ? "bg-success" : "bg-danger"} bg-gradient bg-opacity-75 w-25 height-status-box position-absolute z-3`}
    textClass="text-center text-light p-4"
    fail="Ocurred an error..."
    success="Register was a success, you can login now!!"/>

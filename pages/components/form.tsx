@@ -23,6 +23,7 @@ export function Form(props: any) {
     const handleInput = (e: any) => {
         setDate({...Date, [e.target.name]: e.target.value})
     }
+
     const Submit = (e: SyntheticEvent) => {
         e.preventDefault()
         setTitle("Warning!")
@@ -31,10 +32,11 @@ export function Form(props: any) {
         setdisplayBtnModalClose('d-block')
         setdisplayBtnModalRescue('d-none')
 
+
         const Inputs = document.querySelectorAll('.register')
       
-   const registerData = async () => {
-            await fetch("http://localhost:3000/api/hello", {
+   const registerData = () => {
+             fetch("http://localhost:3000/api/hello", {
                 method: "POST",
                 headers:{
                     'Content-Type': "application/json"
@@ -47,11 +49,10 @@ export function Form(props: any) {
                 
 
             let StatusBox: any = document.querySelector(".bg-opacity-75")
-            StatusBox.style.display = "block"
-            StatusBox.classList.add('animate__animated', 'animate__backInLeft');
+            StatusBox.style.animation = "Statusbox 5s ease-in-out"
             setTimeout(() => {
-            StatusBox.classList.add('animate__animated', 'animate__backOutLeft');
-            }, 2000);
+                StatusBox.style.animation = ""
+            }, 5000);
 
         let inputValid = Inputs[1].value == Inputs[2].value
         Inputs.forEach((i: any) => i.value == '' || !inputValid ? (e.preventDefault(), handleShow()) : registerData())

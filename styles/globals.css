@@ -15,8 +15,18 @@
     0%{ left: 50% }
     100%{ left:0% }
 }
+@keyframes Statusbox{
+    0% { left: -400px; }
+    40%{ left: 0px; }
+    60% { left: 0px; }
+    80% { left: 0px; }
+    90% { left: 0px; }
+    100% { left: -400px; }
+}
 .height-status-box{ height: 90px; }
-#boxstatus{ display: none;}
+#boxstatus{ 
+    left:-400px;
+}
 h1{
     padding-bottom: 30%;
  }
