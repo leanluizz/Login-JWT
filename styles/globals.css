@@ -1,3 +1,15 @@
+<<<<<<< HEAD
+=======
+@media (min-width: 900px) {
+    #Login{ 
+        display: none;
+    }
+}
+
+@media (max-width:900px) {
+    #__next #Login_box, #userForm{ height: 100%;} 
+}
+>>>>>>> ae6447750ba41f2355cd6971f777a245cc44609a
 @keyframes SliderToRight {
     0%{ left:0% }
     100%{ left:50% }
@@ -6,6 +18,21 @@
     0%{ left: 50% }
     100%{ left:0% }
 }
+<<<<<<< HEAD
+=======
+@keyframes Statusbox{
+    0% { left: -400px; }
+    40%{ left: 0px; }
+    60% { left: 0px; }
+    80% { left: 0px; }
+    90% { left: 0px; }
+    100% { left: -400px; }
+}
+.height-status-box{ height: 90px; }
+#boxstatus{ 
+    left:-400px;
+}
+>>>>>>> ae6447750ba41f2355cd6971f777a245cc44609a
 h1{
     padding-bottom: 30%;
  }
@@ -16,8 +43,13 @@ h1{
  }
 body{
     background-image: url("../pages/imgs/background.png");
+<<<<<<< HEAD
     background-repeat: no-repeat;
     background-size: cover;
+=======
+    background-size: cover;
+    background-repeat: no-repeat;
+>>>>>>> ae6447750ba41f2355cd6971f777a245cc44609a
 }
 @keyframes FormSidetoRight {
     0%{
@@ -39,10 +71,18 @@ body{
         right: 0%;
     }
 }
+<<<<<<< HEAD
 #Login_box{
     background-color: white;
     width: 80%;
     height: 800px;
+=======
+#Login{ width: 30%;}
+#Login_box{
+    background-color: white;
+    width: 80%;
+    height: 600px;
+>>>>>>> ae6447750ba41f2355cd6971f777a245cc44609a
     padding: 0%;
     margin-left: auto;
     margin-right: auto;
