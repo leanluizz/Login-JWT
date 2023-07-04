@@ -13,16 +13,11 @@
     "@types/react": "18.2.0",
     "@types/react-dom": "18.2.1",
     "animate.css": "^4.1.1",
-<<<<<<< HEAD
-    "babel-plugin-macros": "^3.1.0",
-    "bootstrap": "^5.3.0-alpha3",
-=======
     "axios": "^1.4.0",
     "babel-plugin-macros": "^3.1.0",
     "bcrypt": "^5.1.0",
     "bootstrap": "^5.3.0-alpha3",
     "dotenv": "^16.1.4",
->>>>>>> ae6447750ba41f2355cd6971f777a245cc44609a
     "eslint": "8.39.0",
     "eslint-config-next": "13.3.4",
     "fs": "^0.0.1-security",
@@ -31,10 +26,7 @@
     "gulp-sass": "^5.1.0",
     "jquery": "^3.6.4",
     "jsdom": "^22.0.0",
-<<<<<<< HEAD
-=======
     "jsonwebtoken": "^9.0.0",
->>>>>>> ae6447750ba41f2355cd6971f777a245cc44609a
     "mysql": "^2.18.1",
     "net": "^1.0.2",
     "next": "13.3.4",

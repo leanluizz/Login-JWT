@@ -4,15 +4,11 @@ import 'animate.css';
 import { SyntheticEvent, useContext, useEffect, useLayoutEffect, useState } from "react";
 import { ModalComponent } from "./ModalError.tsx"
 import { Context } from './context.tsx'
-    
+import ForgotPasswd from "../components/forgotPasswd.tsx"
+
 export function Form(props: any) {
-    let { handleShow, Login, setIs }: any = useContext(Context)
+    let { handleShow, Login, setIs, Is}: any = useContext(Context)
     let [Warning, setWarning] = useState<String>('')
-    let [Title, setTitle] = useState<String>('')
-    let [classModalInput, setclassModalInput] = useState<String>('')
-    let [BackgroundModal, setBackgroundModal] = useState<String>('')
-    let [displayBtnModalClose, setdisplayBtnModalClose] = useState<String>('')
-    let [displayBtnModalRescue, setdisplayBtnModalRescue] = useState<String>('')
 
     const [Date, setDate] = useState({
         user:"",
@@ -25,14 +21,7 @@ export function Form(props: any) {
     }
 
     const Submit = (e: SyntheticEvent) => {
-        e.preventDefault()
-        setTitle("Warning!")
-        setclassModalInput("d-none")
-        setBackgroundModal('bg-danger')
-        setdisplayBtnModalClose('d-block')
-        setdisplayBtnModalRescue('d-none')
-
-
+e.preventDefault()
         const Inputs = document.querySelectorAll('.register')
       
    const registerData = () => {
@@ -46,8 +35,6 @@ export function Form(props: any) {
             .then(response => response.status === 200  ? setIs(true) : setIs(false))
             }
         if(!Login){ //Register
-                
-
             let StatusBox: any = document.querySelector(".bg-opacity-75")
             StatusBox.style.animation = "Statusbox 5s ease-in-out"
             setTimeout(() => {
@@ -55,11 +42,11 @@ export function Form(props: any) {
             }, 5000);
 
         let inputValid = Inputs[1].value == Inputs[2].value
-        Inputs.forEach((i: any) => i.value == '' || !inputValid ? (e.preventDefault(), handleShow()) : registerData())
+        Inputs.forEach((i: any) => i.value == '' || !inputValid ? (e.preventDefault(), handleShow(), setIs(false)) : registerData())
         if (!inputValid) {
-            setWarning("Passwords not are same")
+            setWarning("Passwords not are same"), setIs(false)
         } else {
-            setWarning("Empty forms entries")
+            setWarning("Empty forms entries"), setIs(false)
         }
          }else{ // Login
             e.preventDefault()
@@ -77,34 +64,12 @@ export function Form(props: any) {
          }
         
     }
-
-    useEffect(() => {
-        const getResetPassword = document.querySelector("a")
-        getResetPassword?.addEventListener("click", () => {
-            handleShow()
-            setTitle('Rescue your password with your email')
-            setclassModalInput("d-block mx-auto w-75 rounded-2 border-2 bg-primary form-control")
-            setWarning('')
-            setBackgroundModal('')
-            setdisplayBtnModalClose('d-none')
-            setdisplayBtnModalRescue('d-block')
-        })
-    }, 
-    [])
     
 
     return (
         <>
-            <ModalComponent warning={Warning} 
-            title={Title}
-            button="Close"
-            cls={classModalInput}
-            bg={BackgroundModal}
-            rescue="Submit"
-            displayRescue={displayBtnModalRescue}
-            displayClose={displayBtnModalClose}
-            />
-            <form onSubmit={Submit} action="./api/hello" id={props.id} className="p-1 mx-auto text-center animate__animated animate__rubberBand">
+            <ModalComponent warning={Warning} />
+            <form onSubmit={Submit} id={props.id} className="p-1 mx-auto text-center animate__animated animate__rubberBand">
                 <h1 className="pb-5 pt-5 text-break animate__animated animate__rubberBand" >{props.title}</h1>
                 <div className="d-flex justify-content-around align-items-center">
                     <button className="svgbutton"><svg width="1rem" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" /></svg></button>
@@ -113,12 +78,12 @@ export function Form(props: any) {
                 </div>
 
                 <p className="text-center text-break pt-5 pb-5">{props.legend}</p>
-                <input type="text" name="user" onChange={handleInput} id="inputs" className="form-control mb-3 register" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"></input>
-                <input type="password" name="password" onChange={handleInput} className="form-control mb-3 register" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1"></input>
-                <input type="password" id="password-confirm" className="form-control mb-3 register" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1"></input>
-                <input type="email" id="email" name="email" onChange={handleInput} className="form-control mb-3 register" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1"></input>
-                <button type="submit" id="btn-data" className="btn btn-success text-break">Submit</button>
-                <p className="text-center mt-1"><a href="#" className="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover"></a></p>
+                <input type="text" maxLength="50" name="user" onChange={handleInput} id="inputs" className="form-control mb-3 register" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"></input>
+                <input type="password" maxLength="50" name="password" onChange={handleInput} className="form-control mb-3 register" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1"></input>
+                <input type="password" maxLength="50" id="password-confirm" className="form-control mb-3 register" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1"></input>
+                <input type="email" maxLength="50" id="email" name="email" onChange={handleInput} className="form-control mb-3 register" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1"></input>
+                <button type="submit"  id="btn-data" className="btn btn-success text-break">Submit</button>
+                <p className="text-center mt-1"><ForgotPasswd /></p>
             </form>
         </>
 

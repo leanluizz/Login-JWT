@@ -1,28 +1,3 @@
-<<<<<<< HEAD
-import Image from 'next/image'
-import { Form } from "../pages/components/form.tsx"
-import  { ModalComponent } from "./components/ModalError.tsx"
-import { Box } from "../pages/components/box.tsx"
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'react-bootstrap'
-import Head from 'next/head';
-import { Context, ContexProvider } from "../pages/components/context.tsx"
-import { useContext, useState } from 'react';
-
-export default function Home() {
-
-   let {title, legend}: any = useContext(Context)
-
-   const Modal = <ModalComponent/>
-  return (
-   <>
-
-   <Head>
-   <title>Form</title>
-   </Head>
-<div id="Login_box" className='rounded-1 d-flex justify-content-beetween align-items-center'>
-   <div id='background' className='d-flex justify-content-around align-items-center rounded-8'>
-=======
 import { Form } from "../pages/components/form.tsx"
 import { Box } from "../pages/components/box.tsx"
 import Status  from "../pages/components/status.tsx"
@@ -40,6 +15,8 @@ export default function Home() {
 const flex: string= "d-flex justify-content-around align-items-center rounded-8"
 const none: string = "d-none justify-content-around align-items-center rounded-8" 
 const [screen, setscreen] = useState<any>()
+
+
 
 useEffect(() => { 
    setscreen(window.innerWidth < 900 ? none : flex)
@@ -59,7 +36,6 @@ useEffect(() => {
    <Dropdown />
 <div id="Login_box" className='rounded-1 d-flex justify-content-beetween align-items-center'>
    <div id='background' className={screen}>
->>>>>>> ae6447750ba41f2355cd6971f777a245cc44609a
       <Box
       box="First_box"
       title="Welcome Back!"
@@ -67,10 +43,6 @@ useEffect(() => {
       legendB="login with your personal info!"
       button="Sign in"
       />
-<<<<<<< HEAD
-
-=======
->>>>>>> ae6447750ba41f2355cd6971f777a245cc44609a
       <Box
       box="Second_box"
       title="Hello, Friend!"
@@ -79,19 +51,12 @@ useEffect(() => {
       button="Sign up"
       />
    </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> ae6447750ba41f2355cd6971f777a245cc44609a
    <Form
       title={title}
       legend={legend}
    />
 </div>
-<<<<<<< HEAD
-=======
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossOrigin="anonymous"></script>
->>>>>>> ae6447750ba41f2355cd6971f777a245cc44609a
    </>
   )
 }

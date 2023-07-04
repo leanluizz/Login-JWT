@@ -7,11 +7,7 @@ import { Context } from "./context.tsx";
 
 export function Box(props: any){
 const log = (...e: any) =>  console.log(e)
-<<<<<<< HEAD
-let {title, settitle, setlegend}: any = useContext(Context)
-=======
 let {settitle, setlegend, Login,setLogin}: any = useContext(Context)
->>>>>>> ae6447750ba41f2355cd6971f777a245cc44609a
 
 
 const ForSide = (e: any) => {
@@ -27,24 +23,16 @@ const ButtonForm: any= document.querySelectorAll(".btn")
     const Email:any = document.querySelector('#email')
     const PasswordConfirm: any = document.querySelector('#password-confirm')
      const BTNdATE: any = document.querySelector('#btn-data')
-<<<<<<< HEAD
-     
-  useEffect(() => {
-=======
      const Input: any = document.querySelectorAll("input")
 
   useEffect(() => {
 
->>>>>>> ae6447750ba41f2355cd6971f777a245cc44609a
     ButtonForm[0].addEventListener("click", () => {
 
         Form[0].style = "left : -200%; transition: 1.5s;"
         Background.style = "animation: SliderToRight 1.5s forwards;"
         Form[1].style = "right : 25%; transition: 1.5s;"
         Form[2].style = "animation: FormSidetoRight 1.5s forwards;"
-<<<<<<< HEAD
-       setTimeout(() => {
-=======
         setLogin(true)
         
 
@@ -54,44 +42,28 @@ const ButtonForm: any= document.querySelectorAll(".btn")
             element.value = ''
          })
 
->>>>>>> ae6447750ba41f2355cd6971f777a245cc44609a
         settitle("Sign in to website")
         setlegend("or use your email for sign your credentials")
         Email.remove()
         PasswordConfirm.remove()
         Forgot.innerHTML = "Forgot your password ?"
         Forgot.style.display = "block"
-<<<<<<< HEAD
-        BTNdATE.disabled = "true"
-=======
->>>>>>> ae6447750ba41f2355cd6971f777a245cc44609a
     }, 500);
         
     })
   }, []) 
 
-<<<<<<< HEAD
-
-  useEffect(() => {
-    ButtonForm[1].addEventListener("click", () => {
-=======
   
 
 
 
   useEffect(() => {
      ButtonForm[1].addEventListener("click", () => {
->>>>>>> ae6447750ba41f2355cd6971f777a245cc44609a
         
         Form[1].style = "right : -200%; transition: 1.5s;"
         Background.style = "animation: SliderToLeft 1.5s forwards;"
         Form[0].style = "left : 25%; transition: 1.5s;"
         Form[2].style = "animation: FormSidetoLeft 1.5s forwards;"
-<<<<<<< HEAD
-        BTNdATE.removeAttribute("disabled")
-       
-            setTimeout(() => {
-=======
         setLogin(false)
         
             setTimeout(() => {
@@ -100,7 +72,6 @@ const ButtonForm: any= document.querySelectorAll(".btn")
             element.value = ''
             })
 
->>>>>>> ae6447750ba41f2355cd6971f777a245cc44609a
                 settitle("Create account")
                 setlegend("or use your email for registration")
                Form[2].insertBefore(Email, ButtonForm[2])
@@ -109,10 +80,6 @@ const ButtonForm: any= document.querySelectorAll(".btn")
             }, 500);                  
         })      
   }, [])
-<<<<<<< HEAD
-=======
-
->>>>>>> ae6447750ba41f2355cd6971f777a245cc44609a
     }
     
     return(
